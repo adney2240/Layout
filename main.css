@@ -1,0 +1,439 @@
+        body {
+            margin: 0 auto;
+        }
+        /*estilo menu novO*/
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        /* contents */
+        /* Estilo para dar cor ao fundo da pagina, e mostrar as ilustrações do menu */
+        
+        .contents {
+            display: table;
+            width: 100%;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            background: #2d9bce;
+            box-shadow: 0 0 50px 0 rgba(0, 0, 0, .8);
+            -webkit-transition-property: all;
+            transition-property: all;
+            -webkit-transition-delay: .3s;
+            transition-delay: .3s;
+            -webkit-transition-duration: .5s;
+            transition-duration: .5s;
+        }
+        /* centraliza a imagem na pagina */
+        
+        .contents__inner {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        /*  .contents__inner p {
+            margin-top: 20px;
+            color: #fff;
+            font-size: 20px;
+        } */
+        /* 
+        .contents__inner p span {
+            border-bottom: 1px solid #fff;
+        } */
+        /* drawer menu agrupa os menus na barra de manu*/
+        
+        .drawer-menu {
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            padding: 120px 0;
+            background: #222;
+            -webkit-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: .5s;
+            transition-duration: .5s;
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+            -webkit-transform-origin: right center;
+            -ms-transform-origin: right center;
+            transform-origin: right center;
+            -webkit-transform: perspective(500px) rotateY(-90deg);
+            transform: perspective(500px) rotateY(-90deg);
+            opacity: 0;
+        }
+        /* CENTRALIZA O MENU */
+        
+        .drawer-menu li {
+            text-align: center;
+        }
+        /* formatação do menu */
+        
+        .drawer-menu li a {
+            display: block;
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            color: #fff;
+            -webkit-transition: all .8s;
+            transition: all .8s;
+        }
+        /* efeito do menu */
+        
+        .drawer-menu li a:hover {
+            color: #1a1e24;
+            background: #fff;
+        }
+        /* checkbox usando display none para esconder checkbox e atribuir ao menu para que possa ser aberto*/
+        
+        .check {
+            display: none;
+        }
+        /* menu button - label tag estilo para botao para abrir menu */
+        
+        .menu-btn {
+            position: fixed;
+            display: block;
+            top: 40px;
+            right: 40px;
+            display: block;
+            width: 40px;
+            height: 40px;
+            font-size: 10px;
+            text-align: center;
+            cursor: pointer;
+            z-index: 3;
+        }
+        
+        .bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #fff;
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            -webkit-transform-origin: left top;
+            -ms-transform-origin: left top;
+            transform-origin: left top;
+        }
+        
+        .bar.middle {
+            top: 15px;
+            opacity: 1;
+        }
+        
+        .bar.bottom {
+            top: 30px;
+            -webkit-transform-origin: left bottom;
+            -ms-transform-origin: left bottom;
+            transform-origin: left bottom;
+        }
+        /* FIM DO ESTILO MENU */
+        /* POSICIONANDO MENU NO LUGAR CORRETO */
+        
+        .menu-btn__text {
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            color: #fff;
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            display: block;
+            visibility: visible;
+            opacity: 1;
+        }
+        /* EFEITO MENU APOS DIGITAÇÃO */
+        
+        .menu-btn:hover .bar {
+            background: #999;
+        }
+        
+        .menu-btn:hover .menu-btn__text {
+            color: #999;
+        }
+        /* EFEITO PARA ABERTURA DO MENU APARECIMENTO DAS OPÇOES E OPACIDADE COM FOCO SO NO MENU */
+        
+        .close-menu {
+            position: fixed;
+            top: 0;
+            right: 300px;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0);
+            cursor: url(http://theorthodoxworks.com/demo/images/cross.svg), auto;
+            -webkit-transition-property: all;
+            transition-property: all;
+            -webkit-transition-duration: .3s;
+            transition-duration: .3s;
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+            visibility: hidden;
+            opacity: 0;
+        }
+        /* MOSTRANDO MENU NO MMENTO DA ABERTURA DA PAGINA */
+        
+        .check:checked~.drawer-menu {
+            -webkit-transition-delay: .3s;
+            transition-delay: .3s;
+            -webkit-transform: none;
+            -ms-transform: none;
+            transform: none;
+            opacity: 1;
+            z-index: 2;
+        }
+        /* EMPURRA A PARTE AZUL DA PAGINA PARA ABRIR O MENU (EFEITO) */
+        
+        .check:checked~.contents {
+            -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+            -webkit-transform: translateX(-300px);
+            -ms-transform: translateX(-300px);
+            transform: translateX(-300px);
+        }
+        
+        .check:checked~.menu-btn .menu-btn__text {
+            visibility: hidden;
+            opacity: 0;
+        }
+        /* EFEITO PARA MENU DE BARRA, MEXER LINHA */
+        
+        .check:checked~.menu-btn .bar.top {
+            width: 56px;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        /* MENU CENTRAL SOME NO MOMENTO DO CLIQUE NO MENU */
+        
+        .check:checked~.menu-btn .bar.middle {
+            opacity: 0;
+        }
+        /* EFEITO PARA MENU DE BARRA, MEXER LINHA */
+        
+        .check:checked~.menu-btn .bar.bottom {
+            width: 56px;
+            top: 40px;
+            -webkit-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        
+        .check:checked~.close-menu {
+            -webkit-transition-duration: 1s;
+            transition-duration: 1s;
+            -webkit-transition-delay: .3s;
+            transition-delay: .3s;
+            background: rgba(0, 0, 0, .5);
+            visibility: visible;
+            opacity: 1;
+            z-index: 3;
+        }
+        /*ESTILO PARA NOVO MENU DE LOGIN*/
+        
+        #j1Login {
+            background-color: #f4f4f4;
+        }
+        
+        #j2Login {
+            background-color: #f4f4f4;
+        }
+        
+        form {
+            /* Apenas para centralizar o form na página */
+            margin: 0 auto;
+            width: 400px;
+            /* Para ver as bordas do formulário */
+            padding: 1em;
+            border: 1px solid #CCC;
+            border-radius: 1em;
+        }
+        /*Dando distancia entre as abas de login e senha*/
+        
+        form div+div {
+            margin-top: 1em;
+        }
+        
+        label {
+            /*Para ter certeza que todas as labels tem o mesmo tamanho e estão propriamente alinhadas */
+            display: inline-block;
+            width: 90px;
+            text-align: right;
+        }
+        
+        #button {
+            /* Para posicionar os botões para a mesma posição dos campos de texto */
+            padding-right: 45px;
+            padding-left: 45px;
+            cursor: pointer;
+            margin-left: 120px;
+            background-color: rgb(0 105 134);
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        #button:hover {
+            transform: scale(1.1);
+            transition: 0.75s;
+            border-radius: 5px;
+            background-color: rgb(3, 55, 70);
+            color: rgb(249, 250, 250);
+        }
+        
+        #tituloMenu {
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        /*media querys para formatação mobile quando necessario*/
+        
+        @media (max-width: 600px) {
+            #j2Login {
+                width: 300px;
+            }
+            #j1Login {
+                width: 300px;
+            }
+            form {
+                width: 250px;
+            }
+            #button {
+                margin-left: 35px;
+            }
+            #checkbox {
+                float: right;
+                text-align: center;
+                height: 60px;
+                width: 180px;
+            }
+            #checkbox1 {
+                margin-left: -35px;
+            }
+            #resultado {
+                width: 300px;
+            }
+        }
+        /*Div checkbox para esqueceu sua senha e lembrar senha */
+        
+        #checkbox {
+            clear: both;
+            margin-left: 100px;
+            height: 60px;
+            width: 180px;
+        }
+        /*Formatação para Botao que apresenta o resultado de pesquisa*/
+        
+        #btnBuscaCliente {
+            border: inset;
+            color: white;
+            padding: 10px 32px;
+            text-align: center;
+            display: inline-block;
+            border-color: white;
+            font-size: 15px;
+            background-color: rgb(0 105 134);
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        /*Formatação do botao apos clique*/
+        
+        #btnBuscaCliente:hover {
+            border: inset;
+            color: rgb(0 105 134);
+            padding: 10px 32px;
+            text-align: center;
+            display: inline-block;
+            border-color: rgb(0 105 134);
+            font-size: 15px;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.5s;
+        }
+        /*Formatação de tabela que da os resultados*/
+        
+        thead {
+            background-color: rgb(0 105 134);
+            color: white;
+        }
+        /*Formatação do seletor de faltas*/
+        
+        #seletor {
+            width: 130px;
+            text-align: center;
+            background-color: rgb(0, 105, 134);
+            color: white;
+            border-radius: 3px;
+        }
+        /*Formatação do botao do seletor*/
+        
+        #btnBuscaFalta {
+            border: inset;
+            color: white;
+            padding: 3px 55px;
+            text-align: center;
+            display: inline-block;
+            border-color: white;
+            font-size: 15px;
+            background-color: rgb(0 105 134);
+            cursor: pointer;
+            border-radius: 8px
+        }
+        /*formatação para botao dps de passar o mouse*/
+        
+        #btnBuscaFalta:hover {
+            border: inset;
+            color: rgb(0 105 134);
+            padding: 3px 55px;
+            text-align: center;
+            display: inline-block;
+            border-color: rgb(0 105 134);
+            font-size: 15px;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.5s;
+        }
+        
+        @media(max-width: 306px) {
+            #btnBuscaFalta {
+                margin-top: 5px;
+            }
+        }
+        /* Estilo de classe global para botao */
+        
+        #btnGlobal {
+            border: inset;
+            color: white;
+            padding: 3px 55px;
+            text-align: center;
+            display: inline-block;
+            border-color: white;
+            font-size: 15px;
+            background-color: rgb(0 105 134);
+            cursor: pointer;
+            border-radius: 8px
+        }
+        /*formatação para botao dps de passar o mouse*/
+        
+        #btnGlobal:hover {
+            border: inset;
+            color: rgb(0 105 134);
+            padding: 3px 55px;
+            text-align: center;
+            display: inline-block;
+            border-color: rgb(0 105 134);
+            font-size: 15px;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.5s;
+        }
